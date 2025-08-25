@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -52,6 +55,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Mastero Brand Colors
+				'mastero-blue': 'hsl(var(--mastero-blue-start))',
+				'mastero-blue-end': 'hsl(var(--mastero-blue-end))',
+				'mastero-dark': 'hsl(var(--mastero-dark))',
+				'mastero-text-light': 'hsl(var(--mastero-text-light))',
+				'mastero-text-medium': 'hsl(var(--mastero-text-medium))',
+				'mastero-text-dark': 'hsl(var(--mastero-text-dark))',
+				'mastero-text-body': 'hsl(var(--mastero-text-body))',
+				'mastero-bg-subtle': 'hsl(var(--mastero-bg-subtle))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
