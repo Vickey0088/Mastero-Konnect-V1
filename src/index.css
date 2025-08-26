@@ -7,15 +7,15 @@
 
 @layer base {
   :root {
-    /* Core Brand Colors */
-    --mastero-blue-start: 214 100% 56%; /* #007BFF */
-    --mastero-blue-end: 202 100% 64%; /* #00A3FF */
+    /* Core Brand Colors - New Professional Blue */
+    --mastero-blue-start: 213 54% 42%; /* #2F6BAE */
+    --mastero-blue-end: 213 64% 52%; /* #3A7BC8 */
     --mastero-dark: 210 17% 20%; /* #333 */
     --mastero-text-light: 210 11% 53%; /* #888 */
     --mastero-text-medium: 210 13% 33%; /* #555 */
     --mastero-text-dark: 210 22% 13%; /* #222 */
     --mastero-text-body: 210 9% 40%; /* #666 */
-    --mastero-bg-subtle: 214 100% 97%; /* #f0f7ff */
+    --mastero-bg-subtle: 213 64% 97%; /* #f5f8fc */
     
     /* System Colors */
     --background: 0 0% 100%;
@@ -24,7 +24,7 @@
     --card-foreground: 210 22% 13%;
     --popover: 0 0% 100%;
     --popover-foreground: 210 22% 13%;
-    --primary: 214 100% 56%;
+    --primary: 213 54% 42%;
     --primary-foreground: 0 0% 100%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 210 22% 13%;
@@ -36,7 +36,7 @@
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 214 100% 56%;
+    --ring: 213 54% 42%;
     --radius: 0.5rem;
     
     /* Gradients */

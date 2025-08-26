@@ -5,6 +5,9 @@ import ContentBlock1 from '../components/ContentBlock1';
 import ContentBlock2 from '../components/ContentBlock2';
 import PricingSection from '../components/PricingSection';
 import FAQSection from '../components/FAQSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import CTABanner from '../components/CTABanner';
+import Footer from '../components/Footer';
 
 const Index = () => {
   return (
@@ -16,6 +19,9 @@ const Index = () => {
       <ContentBlock2 />
       <PricingSection />
       <FAQSection />
+      <TestimonialsSection />
+      <CTABanner />
+      <Footer />
     </div>
   );
 };
