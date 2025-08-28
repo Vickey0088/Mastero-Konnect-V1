@@ -1,4 +1,4 @@
-import Navigation from '../components/Navigation';
+import Navigation from '@/components/layout/Navigation';
 import HeroSection from '../components/HeroSection';
 import ServicesSection from '../components/ServicesSection';
 import ContentBlock1 from '../components/ContentBlock1';
@@ -7,7 +7,7 @@ import PricingSection from '../components/PricingSection';
 import FAQSection from '../components/FAQSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import CTABanner from '../components/CTABanner';
-import Footer from '../components/Footer';
+import Footer from '@/components/layout/Footer';
 
 const Index = () => {
   return (
