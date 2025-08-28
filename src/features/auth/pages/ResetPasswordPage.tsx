@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { SignIn } from '@clerk/clerk-react';
-import './AuthLayout.css';
+import '../styles/AuthLayout.css';
 
 const ResetPasswordPage = () => {
   useEffect(() => {

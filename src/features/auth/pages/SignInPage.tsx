@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { SignIn, useUser } from '@clerk/clerk-react';
 import { useNavigate } from 'react-router-dom';
-import './AuthLayout.css';
+import '../styles/AuthLayout.css';
 
 const SignInPage = () => {
   const { isSignedIn } = useUser();
