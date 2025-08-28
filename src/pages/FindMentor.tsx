@@ -22,9 +22,9 @@ interface Mentor {
 
 const FindMentor = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedDomain, setSelectedDomain] = useState("");
-  const [selectedExperience, setSelectedExperience] = useState("");
-  const [selectedRating, setSelectedRating] = useState("");
+  const [selectedDomain, setSelectedDomain] = useState("all");
+  const [selectedExperience, setSelectedExperience] = useState("all");
+  const [selectedRating, setSelectedRating] = useState("all");
   const [favorites, setFavorites] = useState<number[]>([]);
 
   const mentors: Mentor[] = [
@@ -128,9 +128,9 @@ const FindMentor = () => {
                          mentor.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
                          mentor.tagline.toLowerCase().includes(searchQuery.toLowerCase());
     
-    const matchesDomain = !selectedDomain || mentor.domain === selectedDomain;
-    const matchesExperience = !selectedExperience || mentor.experience === selectedExperience;
-    const matchesRating = !selectedRating || mentor.rating >= parseFloat(selectedRating);
+    const matchesDomain = selectedDomain === 'all' || mentor.domain === selectedDomain;
+    const matchesExperience = selectedExperience === 'all' || mentor.experience === selectedExperience;
+    const matchesRating = selectedRating === 'all' || mentor.rating >= parseFloat(selectedRating);
 
     return matchesSearch && matchesDomain && matchesExperience && matchesRating;
   });
@@ -150,9 +150,9 @@ const FindMentor = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 pt-24 pb-12">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-mastero-dark mb-2">
             Find the Right Mentor For You
           </h1>
@@ -162,7 +162,7 @@ const FindMentor = () => {
         </div>
 
         {/* Search & Filter Bar */}
-        <Card className="mb-8 sticky top-0 z-10 bg-white">
+        <Card className="mb-8 sticky top-20 z-10 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-sm">
           <CardContent className="p-6">
             <div className="flex flex-col md:flex-row gap-4">
               {/* Search Input */}
@@ -177,13 +177,13 @@ const FindMentor = () => {
               </div>
 
               {/* Filters */}
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-4">
                 <Select value={selectedDomain} onValueChange={setSelectedDomain}>
                   <SelectTrigger className="w-40">
                     <SelectValue placeholder="Domain" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Domains</SelectItem>
+                    <SelectItem value="all">All Domains</SelectItem>
                     <SelectItem value="Tech">Tech</SelectItem>
                     <SelectItem value="Business">Business</SelectItem>
                     <SelectItem value="Design">Design</SelectItem>
@@ -195,7 +195,7 @@ const FindMentor = () => {
                     <SelectValue placeholder="Experience" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Levels</SelectItem>
+                    <SelectItem value="all">All Levels</SelectItem>
                     <SelectItem value="Mid">Mid Level</SelectItem>
                     <SelectItem value="Senior">Senior</SelectItem>
                     <SelectItem value="Executive">Executive</SelectItem>
@@ -207,7 +207,7 @@ const FindMentor = () => {
                     <SelectValue placeholder="Rating" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Ratings</SelectItem>
+                    <SelectItem value="all">All Ratings</SelectItem>
                     <SelectItem value="4.5">4.5+ stars</SelectItem>
                     <SelectItem value="4.0">4+ stars</SelectItem>
                   </SelectContent>

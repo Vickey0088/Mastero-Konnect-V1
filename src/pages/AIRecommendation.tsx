@@ -120,7 +120,12 @@ const AIRecommendation = () => {
   const visibleMatches = otherMatches.slice(currentSlide * 3, (currentSlide + 1) * 3);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div
+      className="min-h-screen"
+      style={{
+        backgroundImage: 'linear-gradient(180deg, rgba(47,107,174,0.18), rgba(255,255,255,1), rgba(90,141,200,0.18))'
+      }}
+    >
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8 text-center">

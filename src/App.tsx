@@ -9,6 +9,12 @@ import ProfileBuilding from "./pages/ProfileBuilding";
 import AIAssessment from "./pages/AIAssessment";
 import FindMentor from "./pages/FindMentor";
 import AIRecommendation from "./pages/AIRecommendation";
+import MentorProfile from "./pages/MentorProfile";
+import ConnectMentor from "./pages/ConnectMentor";
+import FeedbackRewards from "./pages/FeedbackRewards";
+import SignInPage from "./components/Auth/SignInPage";
+import SignUpPage from "./components/Auth/SignUpPage";
+import ResetPasswordPage from "./components/Auth/ResetPasswordPage";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +30,15 @@ const App = () => (
           <Route path="/ai-assessment" element={<AIAssessment />} />
           <Route path="/find-mentor" element={<FindMentor />} />
           <Route path="/ai-recommendation" element={<AIRecommendation />} />
+          <Route path="/mentor/:id" element={<MentorProfile />} />
+          <Route path="/mentor/:id/connect" element={<ConnectMentor />} />
+          <Route path="/mentor/:id/feedback" element={<FeedbackRewards />} />
+
+          {/* Auth */}
+          <Route path="/auth/sign-in" element={<SignInPage />} />
+          <Route path="/auth/sign-up" element={<SignUpPage />} />
+          <Route path="/auth/reset" element={<ResetPasswordPage />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
