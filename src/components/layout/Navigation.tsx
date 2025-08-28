@@ -1,6 +1,10 @@
-import { useEffect } from 'react';
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const Navigation = () => {
+  const router = useRouter()
   useEffect(() => {
     // Inject Google Fonts: Poppins
     const link1 = document.createElement('link');
@@ -105,6 +109,7 @@ const Navigation = () => {
             </button>
             <button
               className="mk-cta-btn"
+              onClick={() => router.push('/auth/sign-in')}
               style={{
                 width: '120px',
                 height: '40px',
