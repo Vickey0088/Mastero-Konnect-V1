@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useRouter, useParams } from "next/navigation";
 
 const FeedbackRewards = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { id } = useParams();
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
@@ -41,7 +41,7 @@ const FeedbackRewards = () => {
       }, 600);
     }
     setProgress(p => Math.min(p + 20, 100));
-    setTimeout(() => navigate('/'), 1600);
+    setTimeout(() => router.push('/'), 1600);
   };
 
   return (

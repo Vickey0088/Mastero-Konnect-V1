@@ -1,0 +1,34 @@
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[12].use[3]!./src/features/auth/styles/AuthLayout.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+/* Shared Auth Styles (Mastero Konnect) */
+:root{
+  --mk-blue-1:#2F6BAE; --mk-blue-2:#5A8DC8; --mk-text:#333; --mk-muted:#666; --mk-border:#EAEAEA;
+  --mk-gradient: linear-gradient(135deg, var(--mk-blue-1), var(--mk-blue-2));
+}
+.auth-shell{min-height:100vh; display:flex;}
+.auth-left{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:32px; background:#fff}
+.auth-right{flex:1; display:flex; align-items:center; justify-content:center; padding:32px; background:#fff}
+.auth-card{width:100%; max-width:420px; background:#fff; border:1px solid var(--mk-border); border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); padding:24px}
+.auth-logo{display:flex; align-items:center; gap:8px; margin-bottom:12px}
+.auth-brand{font-weight:800; font-size:20px; color:var(--mk-text)}
+.auth-brand-gradient{font-weight:800; font-size:20px; background:var(--mk-gradient); -webkit-background-clip:text; background-clip:text; color:transparent}
+.auth-tag{color:var(--mk-muted); font-size:14px; text-align:center; margin-top:12px}
+.auth-illus{width:100%; max-width:460px}
+.auth-illus svg{width:100%; height:auto}
+.auth-footer{text-align:center; margin-top:16px; color:#888}
+.auth-benefits{margin-top:12px; color:#888}
+.auth-benefits ul{list-style:none; padding:0; margin:8px 0 0}
+.auth-benefits li{margin:6px 0; color:var(--mk-blue-1)}
+
+/* Clerk overrides */
+.cl-rootBox{width:100%}
+.cl-card{box-shadow:0 4px 12px rgba(0,0,0,.05) !important; border:1px solid var(--mk-border) !important; border-radius:12px !important}
+.cl-formButtonPrimary{background:var(--mk-gradient) !important; border:none !important; border-radius:10px !important; font-weight:700 !important}
+.cl-formButtonPrimary:hover{filter:brightness(.96) !important}
+
+@media (max-width: 900px){
+  .auth-shell{flex-direction:column}
+  .auth-left{order:2}
+  .auth-right{order:1}
+} 

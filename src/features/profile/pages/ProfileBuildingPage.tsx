@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const ProfileBuilding = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [skillInput, setSkillInput] = useState("");
@@ -46,9 +46,7 @@ const ProfileBuilding = () => {
   };
 
   const handleFinish = () => {
-    // Optionally validate all fields before navigating
-    // console.log("Collected Data", formData);
-    navigate("/ai-assessment");
+    router.push("/ai-assessment");
   };
 
   const progressPercentage = (completedSteps.length / 5) * 100;

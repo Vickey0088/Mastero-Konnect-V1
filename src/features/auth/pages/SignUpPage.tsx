@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { SignUp, useUser } from '@clerk/clerk-react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import '../styles/AuthLayout.css';
 
 const SignUpPage = () => {
   const { isSignedIn } = useUser();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
-    if (isSignedIn) navigate('/profile-building');
-  }, [isSignedIn, navigate]);
+    if (isSignedIn) router.push('/profile-building');
+  }, [isSignedIn, router]);
 
   return (
     <div className="auth-shell" style={{ fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' }}>

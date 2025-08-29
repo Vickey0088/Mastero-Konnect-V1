@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Send, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 interface Message {
   id: number;
@@ -12,7 +12,7 @@ interface Message {
 }
 
 const AIAssessment = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
@@ -91,23 +91,23 @@ const AIAssessment = () => {
     const lowerText = text.toLowerCase();
     
     if (lowerText.includes('technical') || lowerText.includes('programming') || lowerText.includes('coding')) {
-      setStrengths(prev => [...new Set([...prev, 'Technical Skills'])]);
+      setStrengths(prev => Array.from(new Set([...prev, 'Technical Skills'])));
     }
     if (lowerText.includes('communication') || lowerText.includes('presentation')) {
-      setStrengths(prev => [...new Set([...prev, 'Communication'])]);
+      setStrengths(prev => Array.from(new Set([...prev, 'Communication'])));
     }
     if (lowerText.includes('leadership') || lowerText.includes('manage')) {
-      setStrengths(prev => [...new Set([...prev, 'Leadership'])]);
+      setStrengths(prev => Array.from(new Set([...prev, 'Leadership'])));
     }
 
     if (lowerText.includes('transition') || lowerText.includes('change')) {
-      setAreasToExplore(prev => [...new Set([...prev, 'Career Transition'])]);
+      setAreasToExplore(prev => Array.from(new Set([...prev, 'Career Transition'])));
     }
     if (lowerText.includes('network') || lowerText.includes('connect')) {
-      setAreasToExplore(prev => [...new Set([...prev, 'Professional Networking'])]);
+      setAreasToExplore(prev => Array.from(new Set([...prev, 'Professional Networking'])));
     }
     if (lowerText.includes('strategy') || lowerText.includes('planning')) {
-      setAreasToExplore(prev => [...new Set([...prev, 'Strategic Planning'])]);
+      setAreasToExplore(prev => Array.from(new Set([...prev, 'Strategic Planning'])));
     }
   };
 
@@ -138,7 +138,7 @@ const AIAssessment = () => {
   };
 
   const handleFinishAssessment = () => {
-    navigate("/ai-recommendation");
+    router.push("/ai-recommendation");
   };
 
   return (

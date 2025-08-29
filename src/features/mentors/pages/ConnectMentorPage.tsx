@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useRouter, useParams } from "next/navigation";
 
 const ConnectMentor = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { id } = useParams();
 
   useEffect(() => {
@@ -162,7 +162,7 @@ const ConnectMentor = () => {
             <div className="modal-actions">
               <button className="btn-secondary" onClick={() => window.open('https://calendar.google.com','_blank')}>Add to Google Calendar</button>
               <button className="btn-secondary" onClick={() => window.open('https://outlook.live.com/calendar','_blank')}>Add to Outlook</button>
-              <button className="btn-primary" onClick={() => navigate(`/mentor/${id || 'sarah-chen'}/feedback`)}>Done</button>
+              <button className="btn-primary" onClick={() => router.push(`/mentor/${id || 'sarah-chen'}/feedback`)}>Done</button>
             </div>
           </div>
         </div>

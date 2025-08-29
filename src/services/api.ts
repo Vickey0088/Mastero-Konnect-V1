@@ -8,7 +8,7 @@ class ApiService {
   private baseUrl: string;
 
   constructor() {
-    this.baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+    this.baseUrl = import.meta.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000/api';
   }
 
   private async request<T>(

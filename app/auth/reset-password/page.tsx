@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { SignIn } from '@clerk/nextjs'
+import { SignIn } from '@clerk/nextjs';
 import '../../../src/features/auth/styles/AuthLayout.css'
 
 export default function ResetPasswordPage() {
@@ -44,7 +44,7 @@ export default function ResetPasswordPage() {
             <span className="auth-brand">Mastero</span>
             <span className="auth-brand-gradient">Konnect</span>
           </div>
-          <SignIn routing="path" path="/auth/reset-password" mode="forgotPassword" />
+          <SignIn routing="path" path="/auth/reset-password" />
         </div>
       </div>
     </div>

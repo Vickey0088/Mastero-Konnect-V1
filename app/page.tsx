@@ -1,3 +1,5 @@
+'use client'
+
 import Navigation from '@/components/layout/Navigation'
 import HeroSection from '@/features/landing/components/HeroSection'
 import ServicesSection from '@/features/landing/components/ServicesSection'

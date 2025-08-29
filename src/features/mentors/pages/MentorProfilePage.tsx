@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useRouter, useParams } from "next/navigation";
 
 const MentorProfile = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { id } = useParams();
 
   useEffect(() => {
@@ -128,7 +128,7 @@ const MentorProfile = () => {
 
       <div className="mkp-sticky" role="region" aria-label="Booking">
         <div style={{ color: '#666', fontSize: 14 }}>1:1 Video Session • 30 mins</div>
-        <button className="mkp-cta" onClick={() => navigate(`/mentor/${id || 'sarah-chen'}/connect`)}>Check Availability & Connect</button>
+        <button className="mkp-cta" onClick={() => router.push(`/mentor/${id || 'sarah-chen'}/connect`)}>Check Availability & Connect</button>
       </div>
     </main>
   );
