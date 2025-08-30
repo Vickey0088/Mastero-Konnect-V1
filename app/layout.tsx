@@ -1,13 +1,12 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from 'next/font/google'
-import '../src/styles/globals.css'
-import { Toaster } from '@/components/ui/sonner'
+import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Mastero Konnect - Transform Your Journey',
-  description: 'Connect with industry experts and transform your career journey with AI-powered mentorship matching.',
+  title: 'Mastero Konnect',
+  description: 'Transform Your Journey. Connect with a Mastero.',
 }
 
 export default function RootLayout({
@@ -22,29 +21,12 @@ export default function RootLayout({
   }
 
   return (
-    <ClerkProvider
-      publishableKey={publishableKey}
-      appearance={{
-        variables: {
-          colorPrimary: '#2F6BAE',
-          colorBackground: '#FFFFFF',
-          colorText: '#333333',
-          colorInputBackground: '#FFFFFF',
-          colorInputText: '#333333',
-          borderRadius: '8px',
-        },
-        elements: {
-          formButtonPrimary: 'bg-[linear-gradient(135deg,#2F6BAE,#5A8DC8)] hover:brightness-95',
-          card: 'shadow-[0_4px_12px_rgba(0,0,0,0.05)] border border-[#EAEAEA]',
-        },
-      }}
-    >
-      <html lang="en">
-        <body className={inter.className}>
+    <html lang="en">
+      <body className={inter.className}>
+        <ClerkProvider publishableKey={publishableKey}>
           {children}
-          <Toaster />
-        </body>
-      </html>
-    </ClerkProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   )
 }

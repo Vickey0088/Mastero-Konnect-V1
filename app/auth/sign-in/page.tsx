@@ -1,17 +1,33 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { SignIn, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
-import '../../../src/features/auth/styles/AuthLayout.css'
+import '../styles/AuthLayout.css'
 
 export default function SignInPage() {
-  const { isSignedIn } = useUser()
+  const { isSignedIn, isLoaded } = useUser()
   const router = useRouter()
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    if (isSignedIn) router.push('/profile-building')
-  }, [isSignedIn, router])
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn) {
+      router.push('/profile-building')
+    }
+  }, [isLoaded, isSignedIn, router])
+
+  // Show loading state while Clerk is initializing
+  if (!isLoaded || !isClient) {
+    return (
+      <div className="auth-shell">
+        <div className="auth-loading">Loading...</div>
+      </div>
+    )
+  }
 
   return (
     <div className="auth-shell" style={{ fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' }}>

@@ -1,25 +1,24 @@
 'use client'
 
-import { useEffect } from 'react'
-import { SignIn } from '@clerk/nextjs';
-import '../../../src/features/auth/styles/AuthLayout.css'
+import { useEffect, useState } from 'react'
+import { SignIn } from '@clerk/nextjs'
+import '../styles/AuthLayout.css'
 
 export default function ResetPasswordPage() {
+  const [isClient, setIsClient] = useState(false)
+
   useEffect(() => {
-    const link1 = document.createElement('link')
-    link1.rel = 'preconnect'
-    link1.href = 'https://fonts.googleapis.com'
-    const link2 = document.createElement('link')
-    link2.rel = 'preconnect'
-    link2.href = 'https://fonts.gstatic.com'
-    link2.crossOrigin = ''
-    const link3 = document.createElement('link')
-    link3.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'
-    link3.rel = 'stylesheet'
-    document.head.appendChild(link1)
-    document.head.appendChild(link2)
-    document.head.appendChild(link3)
+    setIsClient(true)
   }, [])
+
+  // Show loading state while component is mounting
+  if (!isClient) {
+    return (
+      <div className="auth-shell">
+        <div className="auth-loading">Loading...</div>
+      </div>
+    )
+  }
 
   return (
     <div className="auth-shell" style={{ fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' }}>
