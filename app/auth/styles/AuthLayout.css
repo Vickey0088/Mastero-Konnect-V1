@@ -165,3 +165,33 @@
     font-size: 1.5rem;
   }
 }
+
+/*extra work by vickey */
+
+.auth-signin-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+
+.signin-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.signin-icon-svg {
+  color: #2563eb; /* Tailwind blue-600 */
+}
+
+.signin-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  color: #1f2937; /* gray-800 */
+  text-align: center;
+}
+
