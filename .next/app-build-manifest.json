@@ -16,21 +16,14 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/_not-found/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
-    ],
     "/auth/sign-in/[[...rest]]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/auth/sign-in/[[...rest]]/page.css",
       "static/chunks/app/auth/sign-in/[[...rest]]/page.js"
     ],
     "/auth/sign-up/[[...rest]]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/auth/sign-up/[[...rest]]/page.css",
       "static/chunks/app/auth/sign-up/[[...rest]]/page.js"
     ]
   }

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { SignUp, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
-import '../../styles/AuthLayout.css'
+import Link from 'next/link'
 
 export default function SignUpPage() {
   const { isSignedIn, isLoaded } = useUser()
@@ -20,46 +20,56 @@ export default function SignUpPage() {
     }
   }, [isLoaded, isSignedIn, router])
 
-  // Show loading state while Clerk is initializing
   if (!isLoaded || !isClient) {
     return (
-      <div className="auth-shell">
-        <div className="auth-loading">Loading...</div>
+      <div className="flex h-screen w-screen items-center justify-center bg-blue-600">
+        <div className="text-white text-sm">Loading...</div>
       </div>
     )
   }
 
   return (
-    <div className="auth-shell" style={{ fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif' }}>
-      <div className="auth-left">
-        <div className="auth-illus" aria-hidden>
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="80" r="5" fill="#D8E4F2" />
-            <circle cx="140" cy="130" r="5" fill="#D8E4F2" />
-            <circle cx="240" cy="70" r="5" fill="#D8E4F2" />
-            <circle cx="320" cy="160" r="5" fill="#D8E4F2" />
-            <line x1="60" y1="80" x2="140" y2="130" stroke="#D8E4F2" strokeWidth="2" />
-            <line x1="140" y1="130" x2="240" y2="70" stroke="#D8E4F2" strokeWidth="2" />
-            <line x1="240" y1="70" x2="320" y2="160" stroke="#D8E4F2" strokeWidth="2" />
-          </svg>
+    <div className="flex min-h-screen w-screen items-center justify-center bg-slate-300 font-sans px-4">
+      <div className="flex w-full max-w-5xl rounded-lg overflow-hidden bg-white shadow-xl">
+        
+        {/* LEFT SIDE - Login CTA (moved here instead of right) */}
+        <div className="hidden md:flex flex-col justify-center items-center w-1/2 bg-blue-600 text-white p-10">
+          <h2 className="text-xl font-semibold mb-4">Already Have an Account?</h2>
+          <p className="text-sm text-blue-100 mb-6 text-center max-w-xs">
+            Log in to continue building and editing your onboarding flows.
+          </p>
+          <Link
+            href="/auth/sign-in"
+            className="border border-white px-6 py-2 rounded-md text-sm font-medium hover:bg-white hover:text-blue-600 transition"
+          >
+            LOG IN
+          </Link>
         </div>
-        <p className="auth-tag">Transform Your Journey. Connect with a Mastero.</p>
-      </div>
 
-      <div className="auth-right">
-        <div className="auth-card">
-          <div className="auth-logo">
-            <span className="auth-brand">Mastero</span>
-            <span className="auth-brand-gradient">Konnect</span>
-          </div>
-          <SignUp routing="path" path="/auth/sign-up" redirectUrl="/profile-building"/>
-          <div className="auth-benefits">
-            <p>Join 10,000+ mentees who found their perfect mentor.</p>
-            <ul>
-              <li>✓ AI-powered matching</li>
-              <li>✓ 1:1 mentorship</li>
-              <li>✓ Career growth</li>
-            </ul>
+        {/* RIGHT SIDE - Sign Up Form */}
+        <div className="flex flex-col justify-center items-center w-full md:w-1/2 px-1 py-1 mb-4">
+          <h1 className="text-2xl font-bold text-gray-900 mb-6 mt-1">Create Your Account</h1>
+          <p className="text-sm text-gray-600 mb-6 text-center">
+            Start your journey with MasteroKonnect 🚀
+          </p>
+
+          <div className="w-full max-w-sm">
+            <SignUp
+              routing="path"
+              path="/auth/sign-up"
+              redirectUrl="/profile-building"
+              signInUrl="/auth/sign-in"
+              appearance={{
+                elements: {
+                  formFieldInput:
+                    'border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2',
+                  formFieldLabel: 'text-sm font-medium text-gray-700 mb-1',
+                  formButtonPrimary:
+                    'bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md text-sm px-4 py-2 w-full mt-3',
+                  card: 'shadow-none border-0 bg-transparent',
+                },
+              }}
+            />
           </div>
         </div>
       </div>

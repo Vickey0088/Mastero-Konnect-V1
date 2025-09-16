@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { SignIn, useUser } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
-import '../../styles/AuthLayout.css'
+import Link from 'next/link'
 
 export default function SignInPage() {
   const { isSignedIn, isLoaded } = useUser()
@@ -20,90 +20,67 @@ export default function SignInPage() {
     }
   }, [isLoaded, isSignedIn, router])
 
-  // Show loading state while Clerk is initializing
+  // Loading State
   if (!isLoaded || !isClient) {
     return (
-      <div className="auth-shell">
-        <div className="auth-loading">Loading...</div>
+      <div className="flex h-screen w-screen items-center justify-center bg-blue-600">
+        <div className="text-white text-sm">Loading...</div>
       </div>
     )
   }
 
   return (
-    <div
-      className="auth-shell"
-      style={{
-        fontFamily:
-          'Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif',
-      }}
-    >
-      <div className="auth-left">
-        <div className="auth-illus" aria-hidden>
-          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="80" r="5" fill="#D8E4F2" />
-            <circle cx="140" cy="130" r="5" fill="#D8E4F2" />
-            <circle cx="240" cy="70" r="5" fill="#D8E4F2" />
-            <circle cx="320" cy="160" r="5" fill="#D8E4F2" />
-            <line
-              x1="60"
-              y1="80"
-              x2="140"
-              y2="130"
-              stroke="#D8E4F2"
-              strokeWidth="2"
-            />
-            <line
-              x1="140"
-              y1="130"
-              x2="240"
-              y2="70"
-              stroke="#D8E4F2"
-              strokeWidth="2"
-            />
-            <line
-              x1="240"
-              y1="70"
-              x2="320"
-              y2="160"
-              stroke="#D8E4F2"
-              strokeWidth="2"
-            />
-          </svg>
-        </div>
-        <p className="auth-tag">
-          Transform Your Journey. Connect with a Mastero.
-        </p>
-      </div>
+    <div className="flex min-h-screen w-screen items-center justify-center bg-slate-300 font-sans px-4">
+      <div className="flex w-full max-w-5xl rounded-lg overflow-hidden bg-white shadow-xl">
+        
+        {/* LEFT SIDE - Login */}
+        <div className="flex flex-col justify-center items-center w-full md:w-1/2 px-6 py-10">
+          <h1 className="text-2xl font-bold text-gray-900 mb-6">Log in to Your Account</h1>
+          <p className="text-sm text-gray-600 mb-6 text-center">
+            Log in so you can continue building and editing your onboarding flows.
+          </p>
 
-      <div className="auth-right">
-        <div className="auth-card">
-          <div className="auth-logo">
-            <span className="auth-brand">Mastero</span>
-            <span className="auth-brand-gradient">Konnect</span>
-          </div>
-
-          {/* Clerk SignIn Component - Centered */}
-          <div className="auth-signin-wrapper">
+          <div className="w-full max-w-sm">
             <SignIn
+              routing="path"
+              path="/auth/sign-in"
               redirectUrl="/profile-building"
+              signUpUrl="/auth/sign-up"
               appearance={{
                 elements: {
+                  // Email + Password Inputs
+                  formFieldInput:
+                    'border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3',
+                  formFieldLabel:
+                    'text-sm font-medium text-gray-700 mb-1',
+
+                  // Primary Button
                   formButtonPrimary:
-                    'bg-blue-600 hover:bg-blue-700 text-white font-medium',
-                  card: 'shadow-lg rounded-2xl border border-gray-200',
+                    'bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md text-sm px-4 py-2 w-full mt-2',
+
+                  // Forgot Password Link
+                  footerAction__forgotPassword:
+                    'text-sm text-blue-600 hover:underline mt-1 block text-right',
+
+                  card: 'shadow-none border-0 bg-transparent',
                 },
               }}
             />
           </div>
+        </div>
 
-          <div className="auth-benefits">
-            <p>Join 10,000+ mentees who found their perfect mentor.</p>
-            <ul>
-              <li>✓ AI-powered matching</li>
-              <li>✓ 1:1 mentorship</li>
-              <li>✓ Career growth</li>
-            </ul>
-          </div>
+        {/* RIGHT SIDE - Sign Up CTA */}
+        <div className="hidden md:flex flex-col justify-center items-center w-1/2 bg-blue-500 text-white p-10">
+          <h2 className="text-xl font-semibold mb-4">Don’t Have an Account Yet?</h2>
+          <p className="text-sm text-blue-100 mb-6 text-center max-w-xs">
+            Let’s get you all set up so you can start creating your first onboarding experience.
+          </p>
+          <Link
+            href="/auth/sign-up"
+            className="border border-white px-6 py-2 rounded-md text-sm font-medium hover:bg-white hover:text-blue-600 transition"
+          >
+            SIGN UP
+          </Link>
         </div>
       </div>
     </div>
